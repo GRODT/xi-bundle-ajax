@@ -113,7 +113,7 @@ class App.AjaxAbstractLogic
                 @handleFailure(response, @element)
 
             if !parsedResponse                                                      # "Not json at all"
-                @handleFailure(response, @element)
+                parsedResponse = { success: { content: response, callback: 'defaultCallback' } }
             else if !parsedResponse.success && !parsedResponse.failure              # "Unknown json response received."
                 @handleFailure(parsedResponse, @element)
 
